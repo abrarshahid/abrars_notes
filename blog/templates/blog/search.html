@@ -1,0 +1,85 @@
+
+{% extends 'blog/basic.html' %}
+
+{% block title %}Home-- Abrar's Notes {% endblock %}
+{% block blogactive %}current{% endblock %}
+
+
+{% block body %}
+{% load static %}
+    <section class="s-content" style="background: #000000;  
+background: -webkit-linear-gradient(to right, #434343, #000000);  
+background: linear-gradient(to right, #434343, #000000); 
+">
+        
+        <div class="row masonry-wrap">
+           {% if results|length == 0 %}
+                 {% for message in messages  %}            
+      <div class="alert-box alert-box--error hideit">
+                    <p>{{message}}</p>
+                    <i class="fa fa-times alert-box__close"></i>
+                </div>
+      {% endfor %}    
+            {% endif%}
+          <h2 style="color: white;">Search Results</h2>
+            <div class="masonry">
+
+                <div class="grid-sizer"></div>
+
+
+                {% if results|length == 0 %}
+                <h5 style="color: grey;">No Search Results with query <b>{{query}}</b></h5>{% endif %}
+                  {% for i in results %}
+                 <article class="masonry__brick entry format-standard" data-aos="fade-up">
+                        
+                    <div class="entry__thumb video-image">
+                       <a href="/blogpost/{{i.slug}}" class="entry__thumb-link">
+                            <img style="min-width: 100%;" src="{{i.thumbnail}}" 
+                                    alt="">
+                        </a>
+                    </div>
+    
+                    <div class="entry__text">
+                        <div class="entry__header">
+                            
+                            <div class="entry__date">
+                                <a href="{{i.slug}}">{{i.pub_date}}</a>
+                            </div>
+                            <h1 class="entry__title"><a href="/blogpost/{{i.slug}}">{{i.post_name}}</a></h1>
+                            
+                        </div>
+                        <div class="entry__excerpt">
+                            <h6>
+                                {{i.subheading}}
+                            </h6>
+                        </div>
+                        <div class="entry__excerpt">
+                            <small>
+                                {{i.content|truncatechars:190}}
+                            </small>
+                        </div>
+                        <div class="entry__meta">
+                            <span class="entry__meta-links">
+                                <a href="category.html">{{i.category_tag}}</a> 
+                                
+                            </span>
+                        </div>
+                    </div>
+    
+                </article> <!-- end article -->
+
+                {% endfor %}
+          
+                
+
+            </div> <!-- end masonry -->
+        </div> <!-- end masonry-wrap -->
+
+        
+
+    </section> <!-- s-content -->
+
+
+
+   {% endblock %}
+   

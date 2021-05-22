@@ -1,0 +1,62 @@
+{% extends 'blog/basic.html' %}
+{% load static %} 
+{% block title %}Home-- Abrar's Notes {% endblock %}
+{% block suggestactive %}current{% endblock %}
+
+{% block body %}
+
+<div style="color:white">
+
+    <!-- s-content
+    ================================================== -->
+    <section class="s-content s-content--narrow" > 
+
+        <div class="row">
+    
+            <div class="s-content__media col-full">
+            
+
+            <div class="col-full s-content__main">
+                {% if user.is_authenticated %}
+          
+               <h3>Suggest Posts.</h3>
+
+                <form name="cForm" id="cForm" method="post" action="/suggest-post/">{% csrf_token %}
+                    <fieldset>
+
+                        <div class="form-field">
+                            <input name="name" type="hidden" id="cName" class="full-width"  value="{{request.user.username}}">
+                        </div>
+
+                        <div class="form-field">
+                            <input name="email" type="hidden" id="cEmail" class="full-width"  value="{{request.user.email}}">
+                        </div>
+
+                        <div class="form-field">
+                            <input name="post_title" type="text" id="cWebsite" class="full-width" placeholder="Suggestion Post Title"  value="">
+                        </div>
+                        <div class="form-field">
+                            <input name="post_category" type="text" id="cWebsite" class="full-width" placeholder="Suggestion Post Category"  value="">
+                        </div>
+                        
+
+                        <button type="submit" class="submit btn btn--primary full-width">Submit</button>
+
+                    </fieldset>
+                </form> <!-- end form -->
+                {% else %}
+
+                <h2>Login to post a suggestion</h2>
+                {% endif %}
+
+            </div> <!-- end s-content__main -->
+
+        </div> <!-- end row -->
+
+    </section> <!-- s-content -->
+
+</div>
+
+
+
+{% endblock %}

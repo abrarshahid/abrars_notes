@@ -1,0 +1,270 @@
+
+
+
+{% extends 'blog/basic.html' %}
+
+{% load static %}
+{% block title %}Home-- Abrar's Notes {% endblock %}
+{% block body %}
+{% load getdict %}
+  <!--  ================================================== -->
+    <section class="s-content s-content--narrow s-content--no-padding-bottom" >
+        
+        <article class="row format-standard">
+         
+
+             <!-- end s-content__media -->
+            <div class="s-content__header col-full">
+                <h1 class="s-content__header-title">
+                    {{post.post_name}}
+                </h1>
+                <ul class="s-content__header-meta">
+                    <li class="date">{{post.pub_date}}</li>
+                    <li class="date">Views:{{post.views}}</li>
+                    <li class="cat">
+                        In
+                        <a href="#0">{{post.category_tag}}</a>
+                    </li>
+                </ul>
+            </div> <!-- end s-content__header -->
+        
+
+                    
+
+            
+
+            <div class="col-full s-content__main">
+
+                <p class="lead">
+                    {% autoescape off %}
+                    {{post.content}}
+                    {% endautoescape %}
+                </p>
+
+                
+                <p class="s-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="s-content__tag-list">
+                        <a href="#0">{{post.category_tag}}</a>
+                        
+                    </span>
+                </p> <!-- end s-content__tags -->
+                  {% if user.is_anonymous %}
+        <h3>Please Login to Like the post</h3>
+        {% else %}
+       
+
+       
+        {% if likes.count > 0  %}      
+        {% for like in likes %}
+        {% if like.user.username == request.user.username %}  
+        <div class="post">
+      <form method="post" action="/removeLike" id="removeLike">{% csrf_token %}
+            <input type="hidden" name="postsno" id="postsno" value="{{post.post_id}}">
+         <button type="submit" style="background-color: transparent;border:none;">      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="50px" height="50px" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="red"><path d="M7 3C4.239 3 2 5.216 2 7.95c0 2.207.875 7.445 9.488 12.74a.985.985 0 0 0 1.024 0C21.125 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3s-5 3-5 3s-2.239-3-5-3z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
+        <p style="margin-top: -3rem;margin-left: 0rem;">{{post.likes}}</p></button></form>
+      </div>
+        {% endif %}
+       {% endfor %}
+        
+
+         
+       
+
+        {% else %}
+          <br>
+          <div class="remove">
+        <form method="post" action="/postLike" id="postLike">{% csrf_token %}
+            <input type="hidden" name="postsno"  id="postsno" value="{{post.post_id}}">
+         <button type="submit" style="background-color: transparent;border:none;">  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="50px" height="50px" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="white"><path d="M7 3C4.239 3 2 5.216 2 7.95c0 2.207.875 7.445 9.488 12.74a.985.985 0 0 0 1.024 0C21.125 15.395 22 10.157 22 7.95C22 5.216 19.761 3 17 3s-5 3-5 3s-2.239-3-5-3z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg></button>
+        </form>
+        <p style="margin-top: -3rem;margin-left: 4.5rem;">{{post.likes}}</p>
+        </div>
+        
+       
+        {% endif %}
+        {% endif %}
+       
+                <div class="s-content__author">
+                    <img src="{% static   'blog/images/avatars/user-03.jpg' %}" alt="">
+
+                    <div class="s-content__author-about">
+                        <h4 class="s-content__author-name">
+                            <a href="#0">Abrar Shahid</a>
+                        </h4>
+                    
+                        <p> I am Abrar Shahid.It's my personal blog and I am a tech savvy,Full Stack Web Developer, Machine Learning/AI enthusiast.i used to build robots once but know I am more interested in programming.. That's all! I hope you enjoy my blog.
+                        </p>
+
+                        <ul class="s-content__author-social">
+                           <li><a href="https://www.facebook.com/abrar.shahid.58760/" target="_blank">Facebook</a></li>
+                           <li><a href="https://twitter.com/AbrarSh10911607" target="_blank">Twitter</a></li>
+                           <li><a href="https://github.com/abrarshahid" target="_blank">GitHub</a></li>
+                           <li><a href="https://www.instagram.com/abrar_shahid_rahik/" target="_blank">Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+      
+        
+       
+            </div> <!-- end s-content__main -->
+
+        </article>
+
+
+        <!-- comments
+        ================================================== -->
+        <div class="comments-wrap">
+
+            <div id="comments" class="row">
+                <div class="col-full">
+                    
+                    
+                    
+                   {% if comments.count != 0 %}
+                    <h3 class="h2">{{comments.count}} Comments</h3>
+                    {% for comment in comments %}
+
+                     <div>
+                    <ol class="commentlist" style="margin-bottom: -3rem;">
+
+                        <li class="depth-1 comment" style="margin-bottom: -3rem;">
+                            <div class="comment__avatar">
+                               <img src="{% static   'blog/images/avatars/user-main.png' %}">
+                            </div>
+                            <div class="comment__content">
+
+                                <div class="comment__info">
+                                    <cite>{{comment.user.username}}</cite>
+
+                                    <div class="comment__meta">
+                                        <time class="comment__time">{{comment.timestamp}}</time>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="comment__text">
+                                <p style="margin-bottom: -3rem;">{{comment.comment}}</p>
+                                </div>
+
+                            </div>
+                            
+                        <form action="/postComment" method="post">{% csrf_token %}
+                        <a type="button" class="reply" style="margin-bottom: -2rem;">Reply</a>
+                        <div class="content" style="overflow: hidden;display: none;">
+                    
+  <textarea class="full-width" placeholder="Your message" name="comment" id="exampleMessage"></textarea>
+  <input type="hidden" name="parentsno" value="{{comment.sno}}">
+   <input type="hidden" name="Parentpostid" value="{{post.post_id}}"/>
+  <button type="submit">Submit</button>
+  </div>
+</form>
+    
+
+
+<a type="button" class="showreply" >Replies</a>
+                        </li> <!-- end comment level 1 -->
+            
+   <div class="depth-1 comment" style="margin-bottom: 15rem;margin-left:15.78%;"> 
+
+     {% for reply in replies|extract_dict:comment.sno %}            
+
+           <span class="comment__content">
+
+                                <span class="comment__info">
+                                    <cite>{{reply.user.username}}</cite>
+
+                                    <span class="comment__meta">
+                                        <time class="comment__time">{{reply.timestamp}}</time>
+
+                                    </span>
+
+                                </span>
+
+                                <span class="comment__text">
+                                <p style="margin-bottom: 4rem;">{{reply.comment}}</p>
+                                </span>
+
+                            </span>
+                            {% endfor %}
+                        </span>
+                    </ol> <!-- end commentlist -->
+                </div>
+
+
+
+
+
+       {% endfor %}
+
+                    {% else %}
+                    <h3 class="h2">No Comments! Just Comment and be the first one</h3>
+                    {% endif %}
+
+                
+                    <!-- commentlist -->
+                   
+               
+                    <!-- respond
+                    ================================================== -->
+                  {% if user.is_anonymous %}
+                  <h3>Please Login to post a Comment</h3>
+                  {% else %}
+
+
+                   <div class="respond">
+
+                        <h3 class="h2">Add Comment</h3>
+
+                        <form name="contactForm" id="contactForm" method="post" action="/postComment">{% csrf_token %}
+                            <fieldset>
+
+                                <div class="message form-field">
+                                    <textarea name="comment" id="cMessage" class="full-width" placeholder="Your Message"></textarea>
+                                </div>
+                                
+                                 <input type="hidden" name="parentsno" value="">
+                                <input type="hidden" name="Parentpostid" value="{{post.post_id}}"/>
+
+                                <button type="submit" class="submit btn--primary btn--large full-width">Submit</button>
+
+                            </fieldset>
+                        </form> <!-- end form -->
+
+                    </div> <!-- end respond -->
+                    {% endif %}
+                </div> <!-- end col-full -->
+
+            </div> <!-- end row comments -->
+        </div> <!-- end comments-wrap -->
+
+    </section> <!-- s-content -->
+
+    {% endblock %}
+
+{% block js %}
+<script>
+var coll = document.getElementsByClassName("reply");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+
+
+
+
+
+</script>
+{% endblock %}

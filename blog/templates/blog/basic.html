@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+{% load static %}
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- css'
+    ================================================== -->
+    <link rel="stylesheet" href="{% static   'blog/css/base.css' %}">
+    <link rel="stylesheet" href="{% static   'blog/css/vendor.css' %}">
+    <link rel="stylesheet" href="{% static   'blog/css/main.css' %}">
+
+    <!-- script
+    ================================================== -->
+
+    <script src="{% static   'blog/js/modernizr.js' %}"></script>
+    <script src="{% static   'blog/js/pace.min.js' %}"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+   
+
+</head>
+
+<body id="top" >
+
+    <!-- pageheader
+    ================================================== -->
+    <section class="s-pageheader " style="min-height: 165px;">
+
+        <header class="header">
+            <div class="header__content row">
+
+                <div class="header__logo">
+                    <a  href="index.html">
+                        <div class="heading-text">Abrar's Notes</div>
+                    </a>
+                </div> <!-- end header__logo -->
+
+                <ul class="header__social">
+                      <li>
+                        <a href="https://www.facebook.com/abrar.shahid.58760/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/AbrarSh10911607" target="_blank"><i class="fa fa-twitter" aria-hidden="true" ></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/abrar_shahid_rahik/" target="_blank"><i class="fa fa-instagram" aria-hidden="true" ></i></a>
+                    </li>
+                     <li>
+                        <a href="https://github.com/abrarshahid" target="_blank"><i class="fa fa-github" aria-hidden="true" ></i></a>
+                    </li>
+                    
+                </ul> <!-- end header__social -->
+
+                <a class="header__search-trigger" href="#0"></a>
+
+                <div class="header__search">
+
+                    <form role="search" method="get" class="header__search-form" action="/search/">
+                        <label>
+                            <span class="hide-content">Search for:</span>
+                            <input type="search" class="search-field" placeholder="Type Keywords" value="" style="color:white;" name="search" title="Search for:" autocomplete="off">
+                            <button class="btn" type="submit">Search</button>
+                        </label>
+                        <input type="submit" class="search-submit" value="Search">
+                    </form>
+            
+                    <a href="#0" title="Close Search" class="header__overlay-close">Close</a>
+
+                </div>  <!-- end header__search -->
+
+
+                <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+
+                <nav class="header__nav-wrap">
+
+                    <h2 class="header__nav-heading h6">Site Navigation</h2>
+
+                    <ul class="header__nav">
+                        <div style="text-align: center;">
+                        
+                        
+                        <li class="{% block homeactive %}{% endblock %}"><a href="/" title="">Home</a></li>
+                        <li class="{% block suggestactive %}{% endblock %}"><a href="/suggest-post/" title="">Suggest Posts</a></li>
+                        
+                      
+                        
+                    {% if user.is_authenticated %}
+
+            
+                       <li class="has-children">
+                            <a >Welcome! {{request.user}}</a>
+                            <ul class="sub-menu">
+                            <li><a href="/logout/">Logout</a></li>
+                            </ul>
+                        </li>
+                        {% if user.is_staff %}
+                         <a class="btn" style=" color: black;margin-left:2rem;" href="/admin/" >Admin Panel</a>
+                        {% endif %}
+                    {% else %}
+                        <a class="btn" style=" color: black;margin-left:2rem;" href="#ex1" rel="modal:open" >Sign up</a>
+                        <div id="ex1" class="modal">
+  <h2>Sign in</h2>
+  <form method="post" action="/signup/">{% csrf_token %}
+                   
+                    <div>
+                        <label for="sampleInput">Name</label>
+                        <input class="full-width" name="name" type="text" placeholder="John Doe" required>
+                    </div>
+                    <div>
+                        <label for="sampleInput">Email</label>
+                        <input class="full-width" type="email" placeholder="test@mailbox.com" name="email" required>
+                    </div>
+                    <div>
+                        <label for="sampleInput">Password</label>
+                        <input class="full-width" type="password" placeholder="Make sure you give a hard password" name="password" required>
+                    </div>
+                    <div>
+                        <label for="sampleInput">Confirm Password</label>
+                        <input class="full-width" type="password" placeholder="Confirm your password by writing again" name="conpass" required>
+                    </div>
+                    <button class="btn btn--stroke full-width" type="submit" href="#0">SUBMIT</button>
+                </form>
+  <a href="#" rel="modal:close">Close</a>
+</div>
+  
+  
+                        <a class="btn" style=" color: black;margin-left:2rem;" href="#ex2" rel="modal:open">Login</a>
+                        <div id="ex2" class="modal">
+ <h2>Login</h2>
+  <form method="post" action="/login/">{% csrf_token %}
+                    <div>
+                        <label for="sampleInput">Name</label>
+                        <input class="full-width" type="text" placeholder="test@mailbox.com" name="lname" required>
+                    </div>
+                    <div>
+                        <label for="sampleInput">Password</label>
+                        <input class="full-width" type="password" placeholder="Make sure you give a hard password" name="lpassword" required>
+                    </div>
+                    <button class="btn btn--stroke full-width" type="submit" href="#0">SUBMIT</button>
+                </form>
+  <a href="#" rel="modal:close">Close</a>
+</div>
+
+
+
+{% endif %}
+
+                        </div>
+                    </ul> <!-- end header__nav -->
+
+                    <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+
+                </nav> <!-- end header__nav-wrap -->
+
+            </div> <!-- header-content -->
+        </header> <!-- header -->
+
+
+
+</section>
+{% for message in messages %}
+ <div {% if message.tags %} class="alert-box alert-box--{{ message.tags }} hideit"> {% endif %}
+                    <p>{{ message }}</p>
+                    <i class="fa fa-times alert-box__close"></i>
+                </div> 
+  
+    {% endfor %}
+
+
+    {% block body %}{% endblock %}
+
+
+    
+
+
+
+
+
+
+
+
+    <!-- Java Script
+    ================================================== -->
+   
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <script src="{% static   'blog/js/plugins.js' %}"></script>
+    <script src="{% static   'blog/js/main.js' %}"></script>
+{% block js %} {% endblock %}
+
+
+</body>
+
+</html>
+
