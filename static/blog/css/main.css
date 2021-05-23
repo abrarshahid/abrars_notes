@@ -1222,23 +1222,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
    background-position: center;
 }
 
-.pgn__prev {
-   background-image: url("../images/icons/icon-arrow-left.svg");
-   left: 0;
-}
 
-.pgn__prev:hover {
-   background-image: url("../images/icons/icon-arrow-left-w.svg");
-}
-
-.pgn__next {
-   background-image: url("../images/icons/icon-arrow-right.svg");
-   right: 0;
-}
-
-.pgn__next:hover {
-   background-image: url("../images/icons/icon-arrow-right-w.svg");
-}
 
 .pgn__prev.inactive, .pgn__next.inactive {
    background-color: #ffffff;
@@ -1246,13 +1230,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
    cursor: default;
 }
 
-.pgn__prev.inactive:hover {
-   background-image: url("../images/icons/icon-arrow-left.svg");
-}
 
-.pgn__next.inactive:hover {
-   background-image: url("../images/icons/icon-arrow-right.svg");
-}
 
 /* ------------------------------------------------------------------- 
  * responsive:
@@ -1287,67 +1265,6 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 
-/* ------------------------------------------------------------------- 
- * ## mediaelement style overrides
- * ------------------------------------------------------------------- */
-.mejs__overlay-button {
-   background-image: url("../images/mejs/mejs-controls.svg");
-}
-
-.mejs__overlay-loading-bg-img {
-   background-image: url("../images/mejs/mejs-controls.svg");
-}
-
-.mejs__button > button {
-   background-image: url("../images/mejs/mejs-controls.svg");
-   background-color: transparent;
-   outline: none !important;
-}
-
-.audio-wrap .mejs__container {
-   background-color: rgba(0, 0, 0, 0.8) !important;
-   font-family: "metropolis-light", sans-serif;
-}
-
-.audio-wrap .mejs__time-buffering,
-.audio-wrap .mejs__time-current,
-.audio-wrap .mejs__time-handle,
-.audio-wrap .mejs__time-loaded,
-.audio-wrap .mejs__time-marker,
-.audio-wrap .mejs__time-total,
-.audio-wrap .mejs__time-hovered {
-   height: 2px;
-}
-
-.audio-wrap .mejs__time-total {
-   margin-top: 9px;
-}
-
-.audio-wrap .mejs__time-handle {
-   left: -5px;
-   width: 12px;
-   height: 12px;
-   border-radius: 50%;
-   background: #FFFFFF;
-   top: -5px;
-   cursor: pointer;
-   display: block;
-   position: absolute;
-   z-index: 2;
-   border: none;
-}
-
-.audio-wrap .mejs__time-handle-content {
-   top: 0;
-   left: 0;
-   width: 12px;
-   height: 12px;
-}
-
-.audio-wrap .mejs__horizontal-volume-total,
-.audio-wrap .mejs__horizontal-volume-current {
-   border-radius: 0;
-}
 
 
 /* ------------------------------------------------------------------- 
@@ -1692,33 +1609,6 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 .format-link .link-wrap cite a:focus {
    color: #000000;
    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-/* format video
- * --------------------------------------- */
-.format-video .entry__thumb a {
-   cursor: zoom-in;
-   display: block;
-   position: relative;
-}
-
-.format-video .entry__thumb a img {
-   vertical-align: bottom;
-}
-
-.format-video .entry__thumb a::before {
-   content: "";
-   display: block;
-   height: 4.5rem;
-   width: 4.5rem;
-   position: absolute;
-   bottom: 3rem;
-   left: 3rem;
-   cursor: zoom-in;
-   background-image: url(../images/icons/icon-video.svg);
-   background-position: center center;
-   background-repeat: no-repeat;
-   background-size: contain;
 }
 
 
@@ -3393,78 +3283,9 @@ footer h4::after {
 }
 
 
-/* -------------------------------------------------------------------
- * ## subscribe form
- * ------------------------------------------------------------------- */
-.s-footer__subscribe .subscribe-form {
-   margin: 0;
-   padding: 0;
-   position: relative;
-}
 
-.s-footer__subscribe #mc-form {
-   width: 100%;
-}
 
-.s-footer__subscribe #mc-form input[type="email"] {
-   width: 100%;
-   height: 5.4rem;
-   font-size: 1.5rem;
-   padding: 1.2rem 100px 1.2rem 60px;
-   background: url(../images/icons/icon-mail.svg) 20px center no-repeat, rgba(0, 0, 0, 0.1);
-   background-size: 24px 16px, auto;
-   margin-bottom: 1.8rem;
-   color: rgba(255, 255, 255, 0.5);
-   border-radius: 3px;
-   border: none;
-}
 
-.s-footer__subscribe #mc-form input[type="email"]:hover, 
-.s-footer__subscribe #mc-form input[type="email"]:focus {
-   color: #FFFFFF;
-}
-
-.s-footer__subscribe #mc-form input[type="email"]::-webkit-input-placeholder {
-   color: rgba(255, 255, 255, 0.2);
-}
-
-.s-footer__subscribe #mc-form input[type="email"]:-moz-placeholder {
-   color: rgba(255, 255, 255, 0.2);  /* Firefox 18- */
-}
-
-.s-footer__subscribe #mc-form input[type="email"]::-moz-placeholder {
-   color: rgba(255, 255, 255, 0.2);  /* Firefox 19+ */
-}
-
-.s-footer__subscribe #mc-form input[type="email"]:-ms-input-placeholder {
-   color: rgba(255, 255, 255, 0.2);
-}
-
-.s-footer__subscribe #mc-form input[type="email"].placeholder {
-   color: rgba(255, 255, 255, 0.2) !important;
-}
-
-.s-footer__subscribe #mc-form input[type=submit] {
-   position: absolute;
-   top: 0;
-   right: 0;
-   color: #FFFFFF;
-   background: #0054a5;
-   border-color: #0054a5;
-   padding: 0 15px;
-   border-radius: 0 3px 3px 0;
-}
-
-.s-footer__subscribe #mc-form label {
-   color: #FFFFFF;
-   font-family: "metropolis-regular", sans-serif, sans-serif;
-   font-size: 1.3rem;
-   padding: 0 2rem;
-}
-
-.s-footer__subscribe #mc-form label i {
-   padding-right: 6px;
-}
 
 
 /* -------------------------------------------------------------------
@@ -3511,7 +3332,7 @@ footer h4::after {
    width: 5.4rem;
    line-height: 5.4rem;
    text-align: center;
-   background-image: url(../images/icons/icon-arrow-up.svg);
+
    background-color: #000000;
    background-repeat: no-repeat;
    background-position: center center;
