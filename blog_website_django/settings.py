@@ -25,7 +25,7 @@ SECRET_KEY = 's1ef-*ef(i^7w4c1a(c#)b**6&wugo3_n1&1mtn12z6-94sztv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [abrars-notes.herokuapp.com,'127.0.0.1']
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Application definition
