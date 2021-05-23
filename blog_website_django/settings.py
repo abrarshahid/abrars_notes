@@ -26,7 +26,7 @@ SECRET_KEY = 's1ef-*ef(i^7w4c1a(c#)b**6&wugo3_n1&1mtn12z6-94sztv'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Application definition
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -119,10 +120,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL= '/media/'
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MESSAGE_TAGS = {
     messages.ERROR:'error'
