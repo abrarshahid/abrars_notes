@@ -2728,10 +2728,7 @@ html.no-csstransitions .featured {
       width: 100%;
    }
 
-   .featured__column--small .entry:last-child {
-      display: none;
-   }
-
+  
    .featured__column--small .entry__category {
       font-size: 1.1rem;
       line-height: 2.4rem;

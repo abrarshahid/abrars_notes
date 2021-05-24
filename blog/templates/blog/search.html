@@ -1,10 +1,14 @@
 
 {% extends 'blog/basic.html' %}
 
-{% block title %}Home-- Abrar's Notes {% endblock %}
+{% block title %}Search-- Abrar's Notes {% endblock %}
 {% block blogactive %}current{% endblock %}
-
-
+{% block meta desc %}Search the informative articles {% endblock %}
+{% block meta image %}https://9to5mac.com/wp-content/uploads/sites/6/2019/03/Untitled.png?w=1500{% endblock %}
+{% block meta og title %}Abrar's Notes{% endblock %}
+{% block meta og url %}https://abrars-notes.herokuapp.com/search/{% endblock %}
+{% block meta og image %}https://9to5mac.com/wp-content/uploads/sites/6/2019/03/Untitled.png?w=1500{% endblock %}
+{% block meta og desc %}Search the informative articles{% endblock %}
 {% block body %}
 {% load static %}
     <section class="s-content" style="background: #000000;  
@@ -30,12 +34,16 @@ background: linear-gradient(to right, #434343, #000000);
                 {% if results|length == 0 %}
                 <h5 style="color: grey;">No Search Results with query <b>{{query}}</b></h5>{% endif %}
                   {% for i in results %}
-                 <article class="masonry__brick entry format-standard" data-aos="fade-up">
-                        
+                 <article itemscope itemtype="http://schema.org/Article" class="masonry__brick entry format-standard" data-aos="fade-up">
+                    <meta itemprop="datePublished" content="2021-05-21 08:45:49 -0700 -0700" />
+                    <meta itemprop="dateModified" content="{{i.pub_date}}" />
+    <meta itemprop="image" content="{{i.thumbnail}}" />
+    <meta itemprop="publisher" content="Abrar's Notes" />
+               
                     <div class="entry__thumb video-image">
                        <a href="/blogpost/{{i.slug}}" class="entry__thumb-link">
                             <img style="min-width: 100%;" src="{{i.thumbnail}}" 
-                                    alt="">
+                                    alt="{{i.post_name}}">
                         </a>
                     </div>
     
@@ -54,9 +62,9 @@ background: linear-gradient(to right, #434343, #000000);
                             </h6>
                         </div>
                         <div class="entry__excerpt">
-                            <small>
-                                {{i.content|truncatechars:190}}
-                            </small>
+                            <span class="entry__meta-links">
+                                <a href="blogpost/{{mypost.3.slug}}">Start Reading &rarr;</a>
+                            </span>
                         </div>
                         <div class="entry__meta">
                             <span class="entry__meta-links">

@@ -3,8 +3,12 @@
 
 {% block title %}Home-- Abrar's Notes {% endblock %}
 {% block homeactive %}current{% endblock %}
-
-
+{% block meta desc %} Training developers to understand basic trending technologies with 6 minute read articles {% endblock %}
+{% block meta image %}https://9to5mac.com/wp-content/uploads/sites/6/2019/03/Untitled.png?w=1500{% endblock %}
+{% block meta og title %}Abrar's Notes{% endblock %}
+{% block meta og url %}https://abrars-notes.herokuapp.com{% endblock %}
+{% block meta og image %}https://9to5mac.com/wp-content/uploads/sites/6/2019/03/Untitled.png?w=1500{% endblock %}
+{% block meta og desc %}Training developers to understand basic trending technologies with 6 minute read articles {% endblock %}
 {% block body %}
 {% load static %}
         {% if mypost %}
@@ -25,7 +29,7 @@
 
                                 <div class="entry__info">
                                     <a href="blogpost/{{mypost.0.slug}}" class="entry__profile-pic">
-                                        <img class="avatar" src="{% static   'blog/images/avatars/user-03.jpg' %}" alt="">
+                                        <img class="avatar" src="{% static   'blog/images/avatars/user-03.jpg' %}" alt="avatar-of-writer">
                                     </a>
 
                                     <ul class="entry__meta">
@@ -106,12 +110,15 @@ background: linear-gradient(to right, #434343, #000000);
                
                
                 {% if mypost %}
-                                   <article class="masonry__brick entry format-standard" data-aos="fade-up">
-                        
+                                   <article itemscope itemtype="http://schema.org/Article" class="masonry__brick entry format-standard" data-aos="fade-up">
+                        <meta itemprop="datePublished" content="{{mypost.3.pub_date}}" />
+                        <meta itemprop="dateModified" content="{{mypost.3.pub_date}}" />
+                        <meta itemprop="image" content="{{mypost.3.thumbnail}}" />
+                        <meta itemprop="publisher" content="Abrar's Notes" />
                     <div class="entry__thumb">
                         <a href="blogpost/{{mypost.3.slug}}" class="entry__thumb-link">
                             <img style="max-width: 100%;" src="{{mypost.3.thumbnail}}"
-                                    alt="">
+                                    alt="{{mypost.3.post_name}}">
                         </a>
                     </div>
             
@@ -131,6 +138,9 @@ background: linear-gradient(to right, #434343, #000000);
                             </p>
                         </div>
                         <div class="entry__meta">
+                             <span class="entry__meta-links">
+                                <a href="blogpost/{{mypost.3.slug}}">Start Reading &rarr;</a>
+                            </span>
                             <span class="entry__meta-links">
                                 <a href="blogpost/{{mypost.3.slug}}">{{mypost.3.category_tag}}</a>
                             </span>
@@ -140,8 +150,8 @@ background: linear-gradient(to right, #434343, #000000);
                 </article> <!-- end article -->
                 {% endif %}
                 
-                <article class="masonry__brick entry format-quote" data-aos="fade-up">
-                        
+                <article  itemscope itemtype="http://schema.org/Article" class="masonry__brick entry format-quote" data-aos="fade-up">
+                        <meta itemprop="publisher" content="Abrar's Notes" />
                     <div class="entry__thumb">
                         <blockquote>
                                 <p>Life is not an endless journey, do that what you are made for!</p>
@@ -157,12 +167,15 @@ background: linear-gradient(to right, #434343, #000000);
                 
                   {% for i in mypost %}
                   {% if forloop.counter >= 5 %}
-                 <article class="masonry__brick entry format-standard" data-aos="fade-up">
-                        
+                 <article  itemscope itemtype="http://schema.org/Article"  class="masonry__brick entry format-standard" data-aos="fade-up">
+                        <meta itemprop="datePublished" content="{{i.pub_date}}" />
+                        <meta itemprop="dateModified" content="{{i.pub_date}}" />
+                        <meta itemprop="image" content="{{i.thumbnail}}" />
+                        <meta itemprop="publisher" content="Abrar's Notes" />
                     <div class="entry__thumb video-image">
                        <a href="blogpost/{{i.slug}}" class="entry__thumb-link">
                             <img style="max-width: 100%;" src='{{i.thumbnail}}' 
-                                    alt="">
+                                    alt="{{i.post_name}}">
                         </a>
                     </div>
     
@@ -181,6 +194,9 @@ background: linear-gradient(to right, #434343, #000000);
                             </p>
                         </div>
                         <div class="entry__meta">
+                            <span class="entry__meta-links">
+                                <a href="blogpost/{{mypost.3.slug}}">Start Reading &rarr;</a>
+                            </span>
                             <span class="entry__meta-links">
                                 <a href="blogpost/{{i.slug}}">{{i.category_tag}}</a> 
                                 
@@ -214,7 +230,7 @@ background: linear-gradient(to right, #434343, #000000);
                 <div class="block-1-2 block-m-full popular__posts">
                     <article class="col-block popular__post">
                         <a href="blogpost/{{i.slug}}" class="popular__thumb">
-                            <img style="max-width: 100%;height: auto"src="{{i.thumbnail}}" alt="">
+                            <img style="max-width: 100%;height: auto"src="{{i.thumbnail}}" alt="{{i.post_name}}">
                         </a>
                         <h5><a href="blogpost/{{i.slug}}">{{i.post_name}}</a></h5>
                         <section class="popular__meta">

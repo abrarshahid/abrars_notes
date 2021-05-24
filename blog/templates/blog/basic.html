@@ -7,12 +7,31 @@
     ================================================== -->
     <meta charset="utf-8">
     <title>{% block title %} {% endblock %}</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Abrar Shahid">
+    <link rel="icon" href="{% static 'blog/images/favicon.png' %}"  sizes="16x16">
+   
+     <meta name="description" content="{% block meta desc %}{% endblock %}">
+    <meta name="image" content="{% block meta image %}{% endblock %}">
+   
+    <meta property="og:title" content="{% block meta og title %}{% endblock %}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{% block meta og url %}{% endblock %}" />
+    <meta property="og:image" content="{% block meta og image %}{% endblock %}" />
+    <meta property="og:description" content="{% block meta og desc %}{% endblock %}" />
+   
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@Abrar_Shahid">
+    <meta name="twitter:title" content="{% block meta og title %}{% endblock %}">
+    <meta name="twitter:description" content="{% block meta desc %}{% endblock %}">
+    <meta name="twitter:image" content="{% block meta og image %}{% endblock %}">
 
     <!-- mobile specific metas
     ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
 
     <!-- css'
     ================================================== -->
@@ -23,8 +42,8 @@
     <!-- script
     ================================================== -->
 
-    <script src="{% static   'blog/js/modernizr.js' %}"></script>
-    <script src="{% static   'blog/js/pace.min.js' %}"></script>
+    <script async src="{% static   'blog/js/modernizr.js' %}"></script>
+    <script async src="{% static   'blog/js/pace.min.js' %}"></script>
 
     <!-- favicons
     ================================================== -->
@@ -197,13 +216,13 @@
     ================================================== -->
    
 
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+   <script async src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 
 <!-- jQuery Modal -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-    <script src="{% static   'blog/js/plugins.js' %}"></script>
-    <script src="{% static   'blog/js/main.js' %}"></script>
+    <script async src="{% static   'blog/js/plugins.js' %}"></script>
+    <script async src="{% static   'blog/js/main.js' %}"></script>
 {% block js %} {% endblock %}
 
 

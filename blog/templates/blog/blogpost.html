@@ -4,26 +4,35 @@
 {% extends 'blog/basic.html' %}
 
 {% load static %}
-{% block title %}Home-- Abrar's Notes {% endblock %}
+{% block title %}{{post.post_name}} {% endblock %}
+{% block meta image %}{{post.thumbnail}}{% endblock %}
+{% block meta desc %} {{post.subheading}} {% endblock %}
+{% block meta og title %}{{post.post_name}}{% endblock %}
+{% block meta og url %}https://abrars-notes.herokuapp.com/{{post.slug}}{% endblock %}
+{% block meta og desc %}{{post.subheading}}{% endblock %}
+{% block meta og image %}{{post.thumbnail}}{% endblock %}
 {% block body %}
 {% load getdict %}
   <!--  ================================================== -->
     <section class="s-content s-content--narrow s-content--no-padding-bottom" >
         
-        <article class="row format-standard">
-         
+        <article itemscope itemtype="http://schema.org/Article" class="row format-standard">
+          <meta itemprop="datePublished" content="{{post.pub_date}}" />
+         <meta itemprop="dateModified" content="{{post.pub_date}}" />
+          <meta itemprop="image" content="{{post.thumbnail}}" />
+           <meta itemprop="publisher" content="Abrar's Notes" />
 
              <!-- end s-content__media -->
             <div class="s-content__header col-full">
-                <h1 class="s-content__header-title">
+                <h1 itemprop="name headline" class="s-content__header-title">
                     {{post.post_name}}
                 </h1>
                 <ul class="s-content__header-meta">
-                    <li class="date">{{post.pub_date}}</li>
-                    <li class="date">Views:{{post.views}}</li>
+                    <li class="date" itemprop="datePublished">{{post.pub_date}}</li>
+                    <li class="date" itemprop="postViews">Views:{{post.views}}</li>
                     <li class="cat">
                         In
-                        <a href="#0">{{post.category_tag}}</a>
+                        <a href="#0" itemprop="postCategory">{{post.category_tag}}</a>
                     </li>
                 </ul>
             </div> <!-- end s-content__header -->
@@ -35,14 +44,14 @@
 
             <div class="col-full s-content__main">
 
-                <p class="lead">
+                <p class="lead" itemprop="articleBody">
                     {% autoescape off %}
                     {{post.content}}
                     {% endautoescape %}
                 </p>
 
                 
-                <p class="s-content__tags">
+                <p class="s-content__tags" itemprop="articletags">
                     <span>Post Tags</span>
 
                     <span class="s-content__tag-list">
@@ -87,7 +96,7 @@
         {% endif %}
        
                 <div class="s-content__author">
-                    <img src="{% static   'blog/images/avatars/user-03.jpg' %}" alt="">
+                    <img src="{% static   'blog/images/avatars/user-03.jpg' %}" alt="avatar-of-writer">
 
                     <div class="s-content__author-about">
                         <h4 class="s-content__author-name">
@@ -119,7 +128,7 @@
         <div class="comments-wrap">
 
             <div id="comments" class="row">
-                <div class="col-full">
+                <div class="col-full" itemprop="articleComments">
                     
                     
                     
@@ -132,7 +141,7 @@
 
                         <li class="depth-1 comment" style="margin-bottom: -3rem;">
                             <div class="comment__avatar">
-                               <img src="{% static   'blog/images/avatars/user-main.png' %}">
+                               <img src="{% static   'blog/images/avatars/user-main.png' %} " alt="avatar-of-user">
                             </div>
                             <div class="comment__content">
 
