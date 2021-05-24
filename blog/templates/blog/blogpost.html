@@ -11,6 +11,12 @@
 {% block metaogurl %}https://abrars-notes.herokuapp.com/{{post.slug}}{% endblock %}
 {% block metaogdesc %}{{post.subheading}}{% endblock %}
 {% block metaogimage %}{{post.thumbnail}}{% endblock %}
+
+
+{% block metatweettitle %}{{post.post_name}}{% endblock %}
+{% block metatweeturl %}https://abrars-notes.herokuapp.com/{{post.slug}}{% endblock %}
+{% block metatweetdesc %}{{post.subheading}}{% endblock %}
+{% block metatweetimage %}{{post.thumbnail}}{% endblock %}
 {% block body %}
 {% load getdict %}
   <!--  ================================================== -->
