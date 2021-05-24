@@ -5,12 +5,12 @@
 
 {% load static %}
 {% block title %}{{post.post_name}} {% endblock %}
-{% block meta image %}{{post.thumbnail}}{% endblock %}
-{% block meta desc %} {{post.subheading}} {% endblock %}
-{% block meta og title %}{{post.post_name}}{% endblock %}
-{% block meta og url %}https://abrars-notes.herokuapp.com/{{post.slug}}{% endblock %}
-{% block meta og desc %}{{post.subheading}}{% endblock %}
-{% block meta og image %}{{post.thumbnail}}{% endblock %}
+{% block metaimage %}{{post.thumbnail}}{% endblock %}
+{% block metadesc %} {{post.subheading}} {% endblock %}
+{% block metaogtitle %}{{post.post_name}}{% endblock %}
+{% block metaogurl %}https://abrars-notes.herokuapp.com/{{post.slug}}{% endblock %}
+{% block metaogdesc %}{{post.subheading}}{% endblock %}
+{% block metaogimage %}{{post.thumbnail}}{% endblock %}
 {% block body %}
 {% load getdict %}
   <!--  ================================================== -->

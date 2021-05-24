@@ -10,21 +10,21 @@
     <meta name="author" content="Abrar Shahid">
     <link rel="icon" href="{% static 'blog/images/favicon.png' %}"  sizes="16x16">
    
-     <meta name="description" content="{% block meta desc %}{% endblock %}">
-    <meta name="image" content="{% block meta image %}{% endblock %}">
+     <meta name="description" content="{% block metadesc %}{% endblock %}">
+    <meta name="image" content="{% block metaimage %}{% endblock %}">
    
-    <meta property="og:title" content="{% block meta og title %}{% endblock %}" />
+    <meta property="og:title" content="{% block metaogtitle %}{% endblock %}" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="{% block meta og url %}{% endblock %}" />
-    <meta property="og:image" content="{% block meta og image %}{% endblock %}" />
-    <meta property="og:description" content="{% block meta og desc %}{% endblock %}" />
+    <meta property="og:url" content="{% block metaogurl %}{% endblock %}" />
+    <meta property="og:image" content="{% block metaogimage %}{% endblock %}" />
+    <meta property="og:description" content="{% block metaogdesc %}{% endblock %}" />
    
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@Abrar_Shahid">
-    <meta name="twitter:title" content="{% block meta og title %}{% endblock %}">
-    <meta name="twitter:description" content="{% block meta desc %}{% endblock %}">
-    <meta name="twitter:image" content="{% block meta og image %}{% endblock %}">
+    <meta name="twitter:title" content="{% block metaogtitle %}{% endblock %}">
+    <meta name="twitter:description" content="{% block metadesc %}{% endblock %}">
+    <meta name="twitter:image" content="{% block metaogimage %}{% endblock %}">
 
     <!-- mobile specific metas
     ================================================== -->
