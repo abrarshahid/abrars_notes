@@ -20,10 +20,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 's1ef-*ef(i^7w4c1a(c#)b**6&wugo3_n1&1mtn12z6-94sztv'
+SECRET_KEY = 'your secret key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['abrars-notes.herokuapp.com','127.0.0.1']
 BASE_DIR = Path(__file__).resolve().parent.parent
